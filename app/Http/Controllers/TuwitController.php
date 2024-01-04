@@ -21,4 +21,9 @@ class TuwitController extends Controller
         
         return redirect()->route("dashboard")->with("success","Tuwit created successfully!");
     }
+
+    public function destroy($id){
+        Tuwitter::where("id", $id)->delete();
+        return redirect()->route("dashboard")->with("success","Tuwit deleted successfully!");
+    }
 }
