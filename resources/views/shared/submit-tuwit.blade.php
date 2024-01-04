@@ -1,4 +1,4 @@
-<h4> Share yours ideas </h4>
+<h4> Share yours tuwit </h4>
 <div class="row">
     <form action="{{ route('tuwit.create') }}" method="POST">
         @csrf
