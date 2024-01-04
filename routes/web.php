@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TermsController;
+use App\Http\Controllers\TuwitController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
@@ -17,6 +18,7 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 |
 */
 
-Route::get('/', [DashboardController::class,'index']);
+Route::get('/', [DashboardController::class,'index'])->name('dashboard');
+Route::post('/tuwit', [TuwitController::class,'store'])->name('tuwit.create');
 Route::get('/profile', [ProfileController::class,'index']);
 Route::get('/terms', [TermsController::class,'index']);
