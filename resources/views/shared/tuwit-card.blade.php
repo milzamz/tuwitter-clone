@@ -11,17 +11,32 @@
             </div>
             <div>
                 <form method="POST" action="{{ route('tuwit.destroy', $tuwits->id) }}">
+                    <a class="btn btn-link btn-sm" href="{{ route('tuwit.show', $tuwits->id) }}">View</a>
+                    <a class="btn btn-link btn-sm" href="{{ route('tuwit.edit', $tuwits->id) }}">Edit</a>
                     @csrf
                     @method('delete')
-                    <button class="btn btn-danger btn-sm">X</button>
+                    <button class="ms-2 btn btn-danger btn-sm">Delete</button>
                 </form>
             </div>
         </div>
     </div>
     <div class="card-body">
+        @if ($editing ?? false)
+        <form action="{{ route('tuwit.update', $tuwits->id) }}" method="POST">
+            @csrf
+            @method('put')
+            <div class="mb-3">
+                <textarea name="content" class="form-control" id="content" rows="3" placeholder="{{ $tuwits->content }}"></textarea>
+            </div>
+            <div class="">
+                <button type="submit" class="btn mb-3 btn-dark"> Share </button>
+            </div>
+        </form>
+        @else
         <p class="fs-6 fw-light text-muted">
             {{ $tuwits->content }}
         </p>
+        @endif
         <div class="d-flex justify-content-between">
             <div>
                 <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
@@ -30,14 +45,6 @@
             <div>
                 <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
                     {{ $tuwits->created_at }} </span>
-            </div>
-        </div>
-        <div>
-            <div class="mb-3">
-                <textarea class="fs-6 form-control" rows="1"></textarea>
-            </div>
-            <div>
-                <button class="btn btn-primary btn-sm"> Post Comment </button>
             </div>
         </div>
     </div>

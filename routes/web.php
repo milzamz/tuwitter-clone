@@ -20,6 +20,9 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 
 Route::get('/', [DashboardController::class,'index'])->name('dashboard');
 Route::post('/tuwit', [TuwitController::class,'store'])->name('tuwit.create');
+Route::get('/tuwit/{id}', [TuwitController::class,'show'])->name('tuwit.show');
+Route::get('/tuwit/{id}/edit', [TuwitController::class,'edit'])->name('tuwit.edit');
+Route::put('/tuwit/{id}', [TuwitController::class,'update'])->name('tuwit.update');
 Route::delete('/tuwit/{id}', [TuwitController::class,'destroy'])->name('tuwit.destroy');
 Route::get('/profile', [ProfileController::class,'index']);
 Route::get('/terms', [TermsController::class,'index']);
